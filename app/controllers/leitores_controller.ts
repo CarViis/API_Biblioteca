@@ -1,5 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import Leitor from '#models/leitore'
+import Leitor from '#models/leitor'
 import { createLeitoresValidator, updateLeitoresValidator } from '#validators/leitore'
 
 export default class LeitoresController {
