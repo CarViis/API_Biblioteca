@@ -15,6 +15,9 @@ export default class Leitor extends BaseModel {
   @column()
   declare matricula: string
 
+  @column()
+  declare course: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

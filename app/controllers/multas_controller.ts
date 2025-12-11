@@ -21,7 +21,7 @@ export default class MultasController {
     const payload = await request.validateUsing(updateMultaValidator)
 
     await multa.merge({
-      data_pagamento: payload.data_pagamento,
+      payment_date: payload.payment_date,
       status: 'pago'
     }).save()
 

@@ -63,9 +63,10 @@ export default class LivrosController {
     }
 
     const livros = await Livro.query()
-      .where('titulo', 'like', `%${query}%`)
-      .orWhere('autor', 'like', `%${query}%`)
-      .orWhere('ISBN', 'like', `%${query}%`)
+      .where('title', 'like', `%${query}%`)
+      .orWhere('author', 'like', `%${query}%`)
+      .orWhere('isbn', 'like', `%${query}%`)
+      .orWhere('category', 'like', `%${query}%`)
 
     return livros
   }

@@ -5,14 +5,9 @@ import vine from '@vinejs/vine'
  */
 export const createLeitoresValidator = vine.compile(
   vine.object({
-    nome: vine.string().trim().minLength(6),
-    CPF: vine.string().trim(),
-    email: vine.string().trim().email(),
-    telefone: vine.string().trim(),
-    endereco: vine.string().trim(),
-    matrícula: vine.string().trim(),
-    curso: vine.string().trim(),
-    data_de_cadastro: vine.date()
+    user_id: vine.number(),
+    matricula: vine.string().trim(),
+    course: vine.string().trim()
   })
 )
 
@@ -21,13 +16,7 @@ export const createLeitoresValidator = vine.compile(
  */
 export const updateLeitoresValidator = vine.compile(
   vine.object({
-    nome: vine.string().trim().minLength(6),
-    CPF: vine.string().trim(),
-    email: vine.string().trim().email(),
-    telefone: vine.string().trim(),
-    endereco: vine.string().trim(),
-    matrícula: vine.string().trim(),
-    curso: vine.string().trim(),
-    data_de_cadastro: vine.date()
+    matricula: vine.string().trim(),
+    course: vine.string().trim()
   })
 )

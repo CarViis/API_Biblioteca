@@ -5,6 +5,6 @@ import vine from '@vinejs/vine'
  */
 export const updateMultaValidator = vine.compile(
   vine.object({
-    data_pagamento: vine.date(),
+    payment_date: vine.date(),
   })
 )

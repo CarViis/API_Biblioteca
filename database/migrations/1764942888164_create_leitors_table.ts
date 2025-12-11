@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id').primary()
       table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE')
       table.string('matricula').notNullable().unique()
+      table.string('course').notNullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
