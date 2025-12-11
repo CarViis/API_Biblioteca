@@ -15,6 +15,9 @@ export default class extends BaseSchema {
       table.date('data_de_cadastro').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
+      table.string('title', 255).notNullable()
+      table.string('autores', 255).notNullable()
+      table.date('ano_de_publicacao').notNullable()
     })
   }
 

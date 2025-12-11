@@ -9,31 +9,31 @@ export default class Livro extends BaseModel {
   declare title: string
 
   @column()
-  declare ISBN: string
+  declare author: string
 
   @column()
-  declare editora: string
+  declare publisher: string
 
   @column()
-  declare autores: string
+  declare isbn: string
 
   @column()
-  declare ano_de_publicacao: Date
+  declare publication_date: Date
 
   @column()
-  declare edicao: string
+  declare edition: string
 
   @column()
-  declare numero_de_paginas: number
+  declare number_of_pages: number
 
   @column()
-  declare categoria: string
+  declare category: string
 
   @column()
-  declare quantidade_de_exemplares: number
+  declare quantity_of_copies: number
 
   @column()
-  declare localização_na_estante: string
+  declare shelf_location: string
 
   @column()
   declare description: string
