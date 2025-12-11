@@ -1,6 +1,6 @@
 import Multa from '#models/multa'
 import type { HttpContext } from '@adonisjs/core/http'
-import { createMultaValidator, updateMultaValidator } from '#validators/multa'
+import { updateMultaValidator } from '#validators/multa'
 
 export default class MultasController {
   /**
