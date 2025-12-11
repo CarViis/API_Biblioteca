@@ -7,10 +7,10 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.integer('emprestimo_id').unsigned().notNullable().references('id').inTable('emprestimos').onDelete('CASCADE')
-      table.integer('leitor_id').unsigned().notNullable().references('id').inTable('leitors').onDelete('CASCADE')
-      table.decimal('valor', 8, 2).notNullable()
-      table.date('data_multa').notNullable()
-      table.date('data_pagamento').nullable()
+      table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE')
+      table.decimal('amount', 8, 2).notNullable()
+      table.date('fine_date').notNullable()
+      table.date('payment_date').nullable()
       table.enum('status', ['pendente', 'pago']).defaultTo('pendente')
 
       table.timestamp('created_at')

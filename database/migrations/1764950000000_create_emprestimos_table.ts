@@ -6,12 +6,12 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('leitor_id').unsigned().notNullable().references('id').inTable('leitors').onDelete('CASCADE')
-      table.integer('livro_id').unsigned().notNullable().references('id').inTable('livros').onDelete('CASCADE')
-      table.date('data_emprestimo').notNullable()
-      table.date('data_devolucao_esperada').notNullable()
-      table.date('data_devolucao').nullable()
-      table.enum('status', ['ativo', 'devolvido', 'atrasado']).defaultTo('ativo')
+      table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('book_id').unsigned().notNullable().references('id').inTable('livros').onDelete('CASCADE')
+      table.date('loan_date').notNullable()
+      table.date('expected_return_date').notNullable()
+      table.date('actual_return_date').nullable()
+      table.enum('status', ['active', 'returned', 'overdue']).defaultTo('active')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

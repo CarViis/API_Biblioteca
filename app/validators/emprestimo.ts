@@ -5,10 +5,10 @@ import vine from '@vinejs/vine'
  */
 export const createEmprestimoValidator = vine.compile(
   vine.object({
-    leitor_id: vine.number(),
-    livro_id: vine.number(),
-    data_emprestimo: vine.date(),
-    data_devolucao_esperada: vine.date(),
+    user_id: vine.number(),
+    book_id: vine.number(),
+    loan_date: vine.date(),
+    expected_return_date: vine.date().optional(),
   })
 )
 
@@ -17,6 +17,6 @@ export const createEmprestimoValidator = vine.compile(
  */
 export const updateEmprestimoValidator = vine.compile(
   vine.object({
-    data_devolucao: vine.date(),
+    actual_return_date: vine.date(),
   })
 )

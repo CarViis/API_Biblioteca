@@ -1,6 +1,7 @@
 import Emprestimo from '#models/emprestimo'
 import type { HttpContext } from '@adonisjs/core/http'
 import { createEmprestimoValidator, updateEmprestimoValidator } from '#validators/emprestimo'
+import EmprestimoService from '#services/emprestimo_service'
 
 export default class EmprestimosController {
   /**
@@ -18,7 +19,8 @@ export default class EmprestimosController {
    */
   async store({ request }: HttpContext) {
     const payload = await request.validateUsing(createEmprestimoValidator)
-    const emprestimo = await Emprestimo.create(payload)
+    const service = new EmprestimoService()
+    const emprestimo = await service.createLoan(payload)
     return emprestimo
   }
 
@@ -40,8 +42,8 @@ export default class EmprestimosController {
     const payload = await request.validateUsing(updateEmprestimoValidator)
     
     await emprestimo.merge({
-      data_devolucao: payload.data_devolucao,
-      status: 'devolvido'
+      actual_return_date: payload.actual_return_date,
+      status: 'returned'
     }).save()
 
     return emprestimo

@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import User from './user.js'
 
 export default class Multa extends BaseModel {
   @column({ isPrimary: true })
@@ -9,19 +11,24 @@ export default class Multa extends BaseModel {
   declare emprestimo_id: number
 
   @column()
-  declare leitor_id: number
+  declare user_id: number
 
   @column()
-  declare valor: number
+  declare amount: number
 
   @column()
-  declare data_multa: Date
+  declare fine_date: Date
 
   @column()
-  declare data_pagamento: Date | null
+  declare payment_date: Date | null
 
   @column()
   declare status: string // 'pendente' | 'pago'
+
+  @belongsTo(() => User, {
+    foreignKey: 'user_id',
+  })
+  declare user: BelongsTo<typeof User>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

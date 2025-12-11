@@ -1,27 +1,40 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import User from './user.js'
+import Livro from './livro.js'
 
 export default class Emprestimo extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare leitor_id: number
+  declare user_id: number
 
   @column()
-  declare livro_id: number
+  declare book_id: number
 
   @column()
-  declare data_emprestimo: Date
+  declare loan_date: Date
 
   @column()
-  declare data_devolucao_esperada: Date
+  declare expected_return_date: Date
 
   @column()
-  declare data_devolucao: Date | null
+  declare actual_return_date: Date | null
 
   @column()
-  declare status: string // 'ativo' | 'devolvido' | 'atrasado'
+  declare status: string // 'active' | 'returned' | 'overdue'
+
+  @belongsTo(() => User, {
+    foreignKey: 'user_id',
+  })
+  declare user: BelongsTo<typeof User>
+
+  @belongsTo(() => Livro, {
+    foreignKey: 'book_id',
+  })
+  declare livro: BelongsTo<typeof Livro>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
