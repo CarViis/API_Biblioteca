@@ -5,12 +5,13 @@ import vine from '@vinejs/vine'
  */
 export const createUsersValidator = vine.compile(
   vine.object({
-    nome: vine.string().trim().minLength(6),
-    CPF: vine.string().trim(),
+    name: vine.string().trim().minLength(6),
+    cpf: vine.string().trim(),
     email: vine.string().trim().email(),
-    telefone: vine.string().trim(),
-    endereco: vine.string().trim(),
-    data_de_cadastro: vine.date()
+    phone: vine.string().trim(),
+    address: vine.string().trim(),
+    registration_date: vine.date(),
+    password: vine.string().trim().minLength(6)
   })
 )
 
@@ -20,14 +21,14 @@ export const createUsersValidator = vine.compile(
 export const createUserWithTypeValidator = vine.compile(
   vine.object({
     type: vine.enum(['user', 'leitor', 'administrador', 'bibliotecario']).optional(),
-    nome: vine.string().trim().minLength(6),
-    CPF: vine.string().trim(),
+    name: vine.string().trim().minLength(6),
+    cpf: vine.string().trim(),
     email: vine.string().trim().email(),
-    telefone: vine.string().trim(),
-    endereco: vine.string().trim(),
-    data_de_cadastro: vine.date(),
-    password: vine.string().trim().minLength(6).optional(),
-    matricula: vine.string().trim().optional(), // Obrigatório para leitor
+    phone: vine.string().trim(),
+    address: vine.string().trim(),
+    registration_date: vine.date(),
+    password: vine.string().trim().minLength(6),
+    matricula: vine.string().trim().optional(),
   })
 )
 
@@ -37,11 +38,11 @@ export const createUserWithTypeValidator = vine.compile(
  */
 export const updateUsersValidator = vine.compile(
   vine.object({
-    nome: vine.string().trim().minLength(6),
-    CPF: vine.string().trim(),
+    name: vine.string().trim().minLength(6),
+    cpf: vine.string().trim(),
     email: vine.string().trim().email(),
-    telefone: vine.string().trim(),
-    endereco: vine.string().trim(),
-    data_de_cadastro: vine.date()
+    phone: vine.string().trim(),
+    address: vine.string().trim(),
+    registration_date: vine.date()
   })
 )

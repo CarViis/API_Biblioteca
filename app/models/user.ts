@@ -20,19 +20,19 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
-  declare nome: string
+  declare name: string
 
   @column()
-  declare CPF: string
+  declare cpf: string
 
   @column()
-  declare telefone: string
+  declare phone: string
 
   @column()
-  declare endereco: string
+  declare address: string
 
   @column()
-  declare data_de_cadastro: Date
+  declare registration_date: Date
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

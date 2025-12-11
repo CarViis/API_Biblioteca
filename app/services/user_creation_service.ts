@@ -6,12 +6,12 @@ import Bibliotecario from '#models/bibliotecario'
 export type UserType = 'user' | 'leitor' | 'administrador' | 'bibliotecario'
 
 export interface CreateUserPayload {
-  nome: string
+  name: string
   email: string
-  CPF: string
-  telefone: string
-  endereco: string
-  data_de_cadastro: Date
+  cpf: string
+  phone: string
+  address: string
+  registration_date: Date
   password?: string
 }
 
@@ -52,12 +52,12 @@ export default class UserCreationService {
    */
   private async createBasicUser(payload: CreateUserPayload) {
     const user = await User.create({
-      nome: payload.nome,
+      name: payload.name,
       email: payload.email,
-      CPF: payload.CPF,
-      telefone: payload.telefone,
-      endereco: payload.endereco,
-      data_de_cadastro: payload.data_de_cadastro,
+      cpf: payload.cpf,
+      phone: payload.phone,
+      address: payload.address,
+      registration_date: payload.registration_date,
       password: payload.password || 'senha_temporaria',
     })
 
@@ -73,12 +73,12 @@ export default class UserCreationService {
   private async createLeitor(payload: CreateLeitorPayload) {
     // Cria o usuário base
     const user = await User.create({
-      nome: payload.nome,
+      name: payload.name,
       email: payload.email,
-      CPF: payload.CPF,
-      telefone: payload.telefone,
-      endereco: payload.endereco,
-      data_de_cadastro: payload.data_de_cadastro,
+      cpf: payload.cpf,
+      phone: payload.phone,
+      address: payload.address,
+      registration_date: payload.registration_date,
       password: payload.password || 'senha_temporaria',
     })
 
@@ -100,12 +100,12 @@ export default class UserCreationService {
    */
   private async createAdministrador(payload: CreateUserPayload) {
     const administrador = await Administradore.create({
-      nome: payload.nome,
+      name: payload.name,
       email: payload.email,
-      CPF: payload.CPF,
-      telefone: payload.telefone,
-      endereco: payload.endereco,
-      data_de_cadastro: payload.data_de_cadastro,
+      cpf: payload.cpf,
+      phone: payload.phone,
+      address: payload.address,
+      registration_date: payload.registration_date,
     })
 
     return {
@@ -119,12 +119,12 @@ export default class UserCreationService {
    */
   private async createBibliotecario(payload: CreateUserPayload) {
     const bibliotecario = await Bibliotecario.create({
-      nome: payload.nome,
+      name: payload.name,
       email: payload.email,
-      CPF: payload.CPF,
-      telefone: payload.telefone,
-      endereco: payload.endereco,
-      data_de_cadastro: payload.data_de_cadastro,
+      cpf: payload.cpf,
+      phone: payload.phone,
+      address: payload.address,
+      registration_date: payload.registration_date,
     })
 
     return {
